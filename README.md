@@ -1,5 +1,5 @@
-# YT-ad-remover
-YouTubeの広告の除去、mp3のダウンロードなどを行うChrome拡張です。
+# new_YT-ad-remover
+YouTubeの広告の除去を行うChrome拡張です。旧版の不具合の解消と、古い仕様の改変を行っています。
 
 # インストール
 1. zipファイルをダウンロード（右上の緑色の"↓Code"ボタンをクリック）し、ローカル環境で解凍。
@@ -10,8 +10,8 @@ YouTubeの広告の除去、mp3のダウンロードなどを行うChrome拡張�
 4. `パッケージ化されていない拡張機能を読み込む`をクリックし、以下のファイルを選択。
 
 ```
-YT-ad-remover-master
-└── YT-ad-remover-master <-これ!
+new_YT-ad-remover-master
+└── new_YT-ad-remover-master <-これ!
     ├── assets
     │   ├── y_128.png
     │   ├── y_48.png
