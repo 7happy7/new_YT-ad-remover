@@ -40,7 +40,7 @@
         logger('searching elements...');
         target.wrap = document.querySelector('#container > .html5-video-player');
         target.player = [...document.querySelectorAll('#container > .html5-video-player > .html5-video-container > video')];
-        if(target.wrap && target.player) {
+        if(target.wrap && target.player.length) {
             target.player.map(p => p.removeEventListener('timeupdate', remover));
             target.player.map(p => p.addEventListener('timeupdate', remover));
             return logger('loaded!', target.player);
