@@ -20,10 +20,13 @@
     const remover = e => {
         const isAd = target.wrap.classList.contains('ad-showing');
         if(isAd) {
-            const dur = target.player.duration;
-            if(!isNaN(dur)) {
-                target.player.currentTime = dur;
-                logger('ad skipped!');
+            for(const p of target.player) {
+                const dur = p.duration;
+                if(!isNaN(dur)) {
+                    p.currentTime = dur;
+                    logger('ad skipped!');
+                    break;
+                }
             }
         }
         const buttons = getButtons();
@@ -36,11 +39,11 @@
     const init = () => {
         logger('searching elements...');
         target.wrap = document.querySelector('#container > .html5-video-player');
-        target.player = document.querySelector('#container > .html5-video-player > .html5-video-container > video');
+        target.player = [...document.querySelectorAll('#container > .html5-video-player > .html5-video-container > video')];
         if(target.wrap && target.player) {
-            target.player.removeEventListener('timeupdate', remover);
-            target.player.addEventListener('timeupdate', remover);
-            return logger('loaded!');
+            target.player.map(p => p.removeEventListener('timeupdate', remover));
+            target.player.map(p => p.addEventListener('timeupdate', remover));
+            return logger('loaded!', target.player);
         }
         return setTimeout(init, 500);
     };
