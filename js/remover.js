@@ -15,6 +15,13 @@
 
     const getButtons = () => [...document.querySelectorAll('.ytp-ad-skip-button-slot button, .ytp-ad-overlay-close-button')];
 
+    const getYTPremiumInvButtons = () => [...document.querySelectorAll('tp-yt-paper-button')].filter(btn => {
+        const v = btn.innerText
+            .replace(/[\u00A0\u1680\u180E\u2000-\u200B\u202F\u205F\u3000\uFEFF\u2060]/g, '')
+            .toLowerCase();
+        return ['skip', 'スキップ'].includes(v);
+    });
+    
     const target = {};
 
     const remover = e => {
@@ -29,7 +36,7 @@
                 }
             }
         }
-        const buttons = getButtons();
+        const buttons = [...getButtons(), ...getYTPremiumInvButtons()];
         if(buttons.length) {
             for(var btn of buttons) btn.click();
             logger("popup cleared!");
